@@ -1,0 +1,35 @@
+import hashlib
+
+# Simulated fingerprint data (hashes)
+# In a real-world scenario, this data would be captured using a biometric device.
+registered_fingerprints = {
+    "user1": "5d41402abc4b2a76b9719d911017c592",  # Hash for "hello"
+    "user2": "202cb962ac59075b964b07152d234b70",  # Hash for "123"
+}
+
+def capture_fingerprint():
+    """Simulate capturing a fingerprint input."""
+    fingerprint_input = input("Enter simulated fingerprint data: ")
+    # Hash the input to simulate fingerprint encoding
+    return hashlib.md5(fingerprint_input.encode()).hexdigest()
+
+def match_fingerprint(captured_fingerprint):
+    """Match the captured fingerprint against registered fingerprints."""
+    for user, fingerprint in registered_fingerprints.items():
+        if captured_fingerprint == fingerprint:
+            return f"Fingerprint match found for {user}!"
+    return "No match found."
+
+def main():
+    print("Simulated Fingerprint Matching System")
+    print("====================================")
+
+    # Capture a fingerprint
+    captured_fingerprint = capture_fingerprint()
+
+    # Match the fingerprint
+    result = match_fingerprint(captured_fingerprint)
+    print(result)
+
+if __name__ == "__main__":
+    main()
